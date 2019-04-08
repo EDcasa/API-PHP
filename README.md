@@ -1,2 +1,3 @@
 # API-PHP
-# API-PHP
+Run command:
+    composer install.
