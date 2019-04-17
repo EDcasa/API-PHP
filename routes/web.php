@@ -18,7 +18,7 @@ $router->get('/', function () use ($router) {
 
 $router->get('/key', function(){
     //return str_random(32);
-    return {"id":4,"name":"test","username":"test","email":"test1@tsa.ec","remember_token":null,"api_token":"Lzw2UuVI2APC24l1gbTjYE6SnZm6cYYDnHH7Qfr7bRshVTd1eH4HxjhrMsfm","created_at":"2019-04-08 18:08:14","updated_at":"2019-04-08 18:08:14"}
+    return return "{'user':'david, 'name':'test'}";
 });
 
 #verify that a user is authenticated
