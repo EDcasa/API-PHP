@@ -27,7 +27,7 @@ class UsersController extends Controller
 
     public function login(Request $request)
     {
-        log::error('Tried of Login'.json_encode($request->all()));
+        //log::error('Tried of Login'.json_encode($request->all()));
         $validator = Validator::make($request->all(), [
             'use_username' => 'required',
             'use_password' => 'required'
@@ -35,7 +35,7 @@ class UsersController extends Controller
 
         if ($validator->fails())
         {
-            Log::notice('Login successful');
+            //Log::notice('Login successful');
             return response()->json(['error'=>$validator->errors()], 400);
         }
 
@@ -54,10 +54,10 @@ class UsersController extends Controller
         }
         else
         {
-            Log::warning('Warning, User no authorized,Login');
+            //Log::warning('Warning, User no authorized,Login');
             return response()->json(['error'=>'No Authorized'], 401);
         }
-        Log::error('Error, unauthorized Login');
+        //Log::error('Error, unauthorized Login');
         return response()->json(['error'=>'Unauthorized'], 406);
     }
 
