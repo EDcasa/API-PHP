@@ -22,6 +22,10 @@ $router->get('/key', function(){
     return json_encode($var);
 });
 
+$router->group(['middleware' => 'basic_auth'], function () use ($router) {
+    $router->post('users/login', ['uses' => 'UserController@login']);
+});
+
 #verify that a user is authenticated
 $router->group(['middleware' => ['auth']], function () use ($router){
     $router->get('/users', ['uses' => 'UsersController@index']);

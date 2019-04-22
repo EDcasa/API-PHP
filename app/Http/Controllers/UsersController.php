@@ -25,6 +25,42 @@ class UsersController extends Controller
         return response()->json(['error' => 'Unauthorized'],401,[]);
     }
 
+    public function login(Request $request)
+    {
+        log::error('Tried of Login'.json_encode($request->all()));
+        $validator = Validator::make($request->all(), [
+            'use_username' => 'required',
+            'use_password' => 'required'
+        ]);
+
+        if ($validator->fails())
+        {
+            Log::notice('Login successful');
+            return response()->json(['error'=>$validator->errors()], 400);
+        }
+
+        $username = $request->input("use_username");
+        $password = $request->input("use_password");
+
+        //$user = LoginUser::where('use_username', $username)->first();
+        //$_passmd5= md5($password);
+        if($user && $password){
+            //Generacion de un token
+            //$user->use_login_token    =  str_random(60);
+            //$user->save();
+            //User with a new token
+ 	    $var = "{'user':'test', 'name':'other test'}";
+	    return json_encode($var);
+        }
+        else
+        {
+            Log::warning('Warning, User no authorized,Login');
+            return response()->json(['error'=>'No Authorized'], 401);
+        }
+        Log::error('Error, unauthorized Login');
+        return response()->json(['error'=>'Unauthorized'], 406);
+    }
+
     function createdUsers(Request $request){
         if($request -> isJson()){
             $data = $request->json()->all();
