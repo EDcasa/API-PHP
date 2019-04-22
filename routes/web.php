@@ -23,7 +23,7 @@ $router->get('/key', function(){
 });
 
 $router->group(['middleware' => 'basic_auth'], function () use ($router) {
-    $router->post('users/login', ['uses' => 'UserController@login']);
+    $router->post('users/login', ['uses' => 'UsersController@login']);
 });
 
 #verify that a user is authenticated
