@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('/key', function(){
-    return str_random(32);
+    return "{'user':'david, 'name':'test'}";
 });
 
 #verify that a user is authenticated
